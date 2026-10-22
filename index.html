@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>星问｜带证据链的天文导览伙伴 · 作品编号 400336</title>
+<style>
+:root{--sky:#090d20;--panel:#111832;--line:#30385b;--ink:#f3f0e9;--muted:#b3b5ca;--violet:#adb5ff;--gold:#f3d58f;--blue:#7fdbe0;--warn:#ffb4a2}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 40% -10%,#323262 0,transparent 45%),var(--sky);color:var(--ink);font:15px/1.55 "Segoe UI","Microsoft YaHei",sans-serif}
+.shell{max-width:1180px;margin:auto;padding:0 22px}
+.top{height:64px;display:flex;justify-content:space-between;align-items:center;gap:12px;border-bottom:1px solid #ffffff1b;color:var(--muted);font-size:12px}
+.brand{color:var(--violet);font-weight:700;letter-spacing:.16em;text-decoration:none}
+.back{color:var(--muted);text-decoration:none}
+.top-actions{display:flex;align-items:center;gap:14px}
+.ghost{border:1px solid var(--line);border-radius:99px;background:#171f3b;color:var(--ink);font:inherit;font-size:12px;padding:7px 14px;cursor:pointer}
+.ghost:hover{border-color:var(--gold);color:#fff5dd}
+.hero{padding:30px 0 16px}
+.k{font:11px ui-monospace,monospace;letter-spacing:.17em;color:var(--blue)}
+h1{font-size:clamp(31px,4vw,49px);line-height:1.1;margin:8px 0}
+.hero p{max-width:780px;color:var(--muted);margin:0}
+.guide{margin:12px 0 0;padding:9px 13px;border-left:2px solid var(--gold);background:#141a33;border-radius:0 8px 8px 0;font-size:12px;color:#e7e3d3}
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:12px 0 38px}
+.panel{border:1px solid var(--line);border-radius:15px;background:#111832dd;overflow:hidden}
+.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 17px;border-bottom:1px solid var(--line);font-size:12px}
+.label{color:var(--blue);font:10px ui-monospace,monospace}
+.sky{position:relative;min-height:430px;background:radial-gradient(circle at 32% 44%,#6464a8 0,#272c67 16%,#171e49 42%,#0b1231 75%);overflow:hidden}
+.sky:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#fff 1px,transparent 1.7px),radial-gradient(#dce3ff 1px,transparent 1.8px);background-size:63px 57px,107px 89px;background-position:11px 20px,43px 4px;opacity:.5}
+.nebula{position:absolute;width:240px;height:150px;border-radius:50%;left:22%;top:24%;background:radial-gradient(ellipse,#efbfff5c,#83a2f02b 40%,transparent 72%);filter:blur(9px);animation:drift 16s ease-in-out infinite alternate}
+@keyframes drift{from{transform:translate(0,0)}to{transform:translate(16px,10px)}}
+.node{position:absolute;border:0;background:transparent;color:#fff;cursor:pointer;padding:8px;text-align:center;text-shadow:0 0 13px #a9bdff;font-size:12px;transform:translate(-50%,-50%);line-height:1.2}
+.node b{display:block;font-size:23px;color:var(--gold)}
+.node[aria-pressed="true"] b{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{text-shadow:0 0 8px #f3d58f}50%{text-shadow:0 0 20px #ffe9b6}}
+.node:hover,.node:focus-visible{outline:1px solid var(--gold);border-radius:10px}
+.n1{left:13%;top:19%}.n2{left:38%;top:11%}.n3{left:64%;top:16%}.n4{left:85%;top:38%}
+.n5{left:65%;top:62%}.n6{left:38%;top:76%}.n7{left:12%;top:66%}.n8{left:12%;top:38%}
+.map-foot{padding:12px 16px;color:var(--muted);font-size:10px}
+.answer{padding:17px}
+.ask{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}
+.q{border:1px solid var(--line);border-radius:99px;padding:7px 11px;background:#171f3b;color:var(--ink);font:inherit;font-size:11px;cursor:pointer}
+.q:hover,.q[aria-pressed=true]{border-color:var(--violet);color:#e4e5ff;background:#252950}
+.questionbar{display:flex;gap:7px;margin:8px 0}
+.questionbar input{flex:1;min-width:0;border:1px solid var(--line);border-radius:9px;background:#0c142d;color:var(--ink);padding:9px 11px;font:inherit;font-size:12px}
+.questionbar button{border:0;border-radius:9px;background:var(--violet);color:#14172c;font:inherit;font-size:12px;font-weight:700;padding:9px 14px;cursor:pointer}
+.query-note{font-size:11px;color:var(--muted);margin:6px 0 10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px}
+.query-note.miss{border-color:var(--warn);color:#ffd9cf}
+.claim{font-size:19px;line-height:1.4;margin:12px 0 6px}
+.why-label{font:10px ui-monospace,monospace;letter-spacing:.12em;color:var(--gold);margin:10px 0 3px}
+.why{font-size:12px;color:var(--muted);margin:0 0 12px}
+.evidence{border-left:2px solid var(--gold);padding:11px 13px;background:#171c35;border-radius:0 8px 8px 0;font-size:11px;color:#d5d3de}
+.ev-row{display:grid;grid-template-columns:76px 1fr;gap:10px;padding:4px 0;border-bottom:1px solid #ffffff10}
+.ev-row:last-of-type{border-bottom:0}
+.ev-k{color:var(--blue);font:10px ui-monospace,monospace;padding-top:1px}
+.ev-v{line-height:1.5}
+.badge{display:inline-block;border:1px solid var(--gold);color:var(--gold);border-radius:99px;padding:1px 8px;font-size:10px;margin-right:6px}
+.badge.review{border-color:var(--warn);color:var(--warn)}
+.evidence a{color:var(--blue)}
+.evidence strong{color:var(--gold)}
+.miss-box{margin-top:10px;border:1px solid var(--warn);border-radius:9px;padding:10px 12px;background:#2a1a22;font-size:11px;color:#ffe4dc}
+.miss-box b{color:var(--warn)}
+.miss-box ol{margin:6px 0 0;padding-left:18px}
+.quiz{padding:15px 17px;border-top:1px solid var(--line)}
+.quiz h2{font-size:14px;margin:0 0 8px}
+.quiz p{font-size:12px;margin:0 0 10px;color:#d4d7e8}
+.tabs{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:10px}
+.tab{border:1px solid var(--line);background:#101831;color:var(--ink);border-radius:99px;padding:6px 11px;font:inherit;font-size:11px;cursor:pointer}
+.tab[aria-selected="true"]{border-color:var(--violet);background:#252950;color:#e4e5ff}
+.qblock{border-top:1px solid #ffffff12;padding:10px 0 4px}
+.qtext{font-size:12px;margin:0 0 8px}
+.opts{display:grid;gap:7px}
+.opt{border:1px solid var(--line);background:#101831;color:var(--ink);text-align:left;border-radius:8px;padding:8px 10px;font:inherit;font-size:11px;cursor:pointer}
+.opt:hover{border-color:var(--blue)}
+.opt.ok{border-color:#7fe0a8;background:#16281f}
+.opt.no{border-color:var(--warn);background:#2a1a22}
+.feedback{color:var(--gold);font-size:11px;margin-top:8px}
+.feedback .linkbtn{margin-top:6px;border:1px solid var(--violet);background:transparent;color:var(--violet);border-radius:8px;padding:5px 10px;font:inherit;font-size:11px;cursor:pointer}
+.quiz-foot{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.linkbtn.plain{border:1px solid var(--line);background:#171f3b;color:var(--ink);border-radius:8px;padding:6px 11px;font:inherit;font-size:11px;cursor:pointer}
+.note{font-size:10px;color:#989fb8;margin:0;padding:0 17px 15px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+/* ===== 证据分级说明 / 引导式学习路径 / 教师视图 ===== */
+.layout>.full{grid-column:1/-1}
+.grades-body{padding:15px 18px 18px;font-size:12px;color:#d6d8e8}
+.grades-body p{margin:0 0 9px}
+.grade-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 14px}
+.gcard{border:1px solid var(--line);border-top:3px solid var(--line);border-radius:10px;padding:11px 13px;background:#171c35}
+.gcard.obs{border-top-color:var(--blue)}
+.gcard.theory{border-top-color:var(--gold)}
+.gcard.open{border-top-color:var(--warn)}
+.gcard .gl{display:block;font:10px ui-monospace,monospace;letter-spacing:.12em;color:var(--muted);margin-bottom:5px}
+.gcard b.t{display:block;font-size:14px;margin-bottom:5px}
+.gcard p{margin:0}
+.eg{border-left:2px solid var(--violet);background:#141a33;border-radius:0 8px 8px 0;padding:10px 13px;margin:0 0 10px}
+.eg h4{margin:0 0 5px;font-size:12px;color:var(--violet)}
+.eg ol{margin:6px 0 0;padding-left:18px}
+.path,.teacher{padding:15px 17px 17px}
+.path-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.bar{height:6px;border-radius:99px;background:#1d2547;overflow:hidden;margin:11px 0 7px}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--gold))}
+.step{border:1px solid var(--line);border-radius:10px;background:#141a33;padding:11px 13px;margin-bottom:9px}
+.step.done{border-color:#4f7f68}
+.step h4{margin:0 0 4px;font-size:13px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{font:10px ui-monospace,monospace;border:1px solid var(--line);border-radius:99px;padding:1px 8px;color:var(--muted)}
+.chip.done{border-color:#7fe0a8;color:#7fe0a8;background:#16281f}
+.meta{font-size:11px;color:var(--muted);line-height:1.55;margin:6px 0 0}
+.step>.meta{margin-top:6px}
+.chk{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 2px}
+.mini{border:1px solid var(--line);background:#101831;color:var(--ink);border-radius:99px;padding:5px 11px;font:inherit;font-size:11px;cursor:pointer}
+.mini:hover:enabled{border-color:var(--blue)}
+.mini:disabled{opacity:.42;cursor:not-allowed}
+.mini.on{border-color:#7fe0a8;color:#bff0d3;background:#16281f}
+.okline{color:#bff0d3}
+input.learner,textarea.openq,textarea#teacherInput{width:100%;border:1px solid var(--line);border-radius:9px;background:#0c142d;color:var(--ink);padding:8px 11px;font:inherit;font-size:12px}
+input.learner{width:min(220px,100%)}
+textarea.openq{min-height:84px;resize:vertical}
+textarea#teacherInput{min-height:104px;resize:vertical;font-family:ui-monospace,monospace;font-size:11px}
+.cred{border:1px solid var(--gold);border-radius:11px;background:#1d1a30;padding:12px 14px;margin-top:12px}
+.cred h4{margin:0 0 6px;font-size:13px;color:var(--gold)}
+.cred ul{margin:6px 0 10px;padding-left:19px}
+.tfile{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:9px 0 0;font-size:12px}
+.statgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(136px,1fr));gap:9px;margin:11px 0}
+.stat{border:1px solid var(--line);border-radius:9px;background:#141a33;padding:9px 11px}
+.stat b{display:block;font-size:20px;color:var(--gold);line-height:1.25}
+.stat span{font-size:11px;color:var(--muted)}
+.tblwrap{overflow:auto;margin:8px 0 4px}
+table.tbl{border-collapse:collapse;width:100%;min-width:430px;font-size:11px}
+.tbl th,.tbl td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.tbl th{background:#1a2140;color:var(--blue);font-weight:600;white-space:nowrap}
+/* 作品说明抽屉 */
+.mask{position:fixed;inset:0;background:#04060fbf;opacity:0;pointer-events:none;transition:opacity .22s;z-index:40}
+.mask.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(460px,100%);background:#0e142c;border-left:1px solid var(--line);z-index:41;transform:translateX(102%);transition:transform .26s ease;display:flex;flex-direction:column}
+.drawer.on{transform:translateX(0)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+.drawer-head b{font-size:15px}
+.drawer-body{overflow:auto;padding:14px 18px 30px;font-size:12px;color:#d6d8e8}
+.drawer-body h3{font-size:12px;color:var(--blue);font:11px ui-monospace,monospace;letter-spacing:.1em;margin:18px 0 6px}
+.drawer-body h3:first-child{margin-top:0}
+.drawer-body p{margin:0 0 8px}
+.drawer-body ol,.drawer-body ul{margin:0 0 8px;padding-left:19px}
+.drawer-body li{margin-bottom:5px}
+.drawer-body a{color:var(--blue)}
+.tag{display:inline-block;border:1px solid var(--warn);color:var(--warn);border-radius:99px;padding:0 7px;font-size:10px;margin-left:4px}
+@media(max-width:780px){.layout{grid-template-columns:1fr}.grade-grid{grid-template-columns:1fr}.sky{min-height:330px}.shell{padding:0 14px}.node{font-size:11px}.node b{font-size:19px}.drawer{width:100%}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <span class="brand">FIELD / 03</span>
+    <div class="top-actions">
+      
+      <button class="ghost" id="openInfo" aria-haspopup="dialog">作品说明</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="k">EVIDENCE-BASED SCIENCE LEARNING</div>
+    <h1>星问：带证据链的天文导览伙伴</h1>
+    <p>点选一个天体，或从常见问题开始。每条解释都写明适用范围、证据类型、来源与复核状态；这里运行的是离线规则检索，不调用在线生成式模型。</p>
+    <p class="guide">引导语：读任何一条结论前，先问一句——<b>这条结论靠什么支持？</b>结论下面就是这个答案。</p>
+    <p class="guide">第一次使用建议顺着页面往下走：先读「什么是证据分级」，再点星图，最后走「引导式学习路径」；教师可直接翻到页面底部的「教师视图」。</p>
+  </section>
+
+  <main class="layout">
+    <section class="panel full" aria-labelledby="gradeTitle">
+      <div class="panel-head"><b id="gradeTitle">先读这一条：什么是"证据分级"</b><span class="label">THE CORE IDEA</span></div>
+      <div class="grades-body">
+        <p>大部分天文科普只告诉你"结论是什么"。本作品多做一步：告诉你<b>这条结论靠什么支持、在什么范围内成立</b>。我们把支持方式分成三类，每条知识都会在证据卡的「证据类型」字段里标明属于哪一类。<b>这是本作品与普通天文科普 App 最主要的区别。</b></p>
+
+        <div class="grade-grid">
+          <div class="gcard obs"><span class="gl">LEVEL A</span><b class="t">观测证据</b>
+            <p>由望远镜观测数据直接或比较直接支持的说法：看得见、测得着，不同团队可以重复观测与核对。看到这个标签，你可以追问：<b>"天文学家是怎么看到的？"</b></p></div>
+          <div class="gcard theory"><span class="gl">LEVEL B</span><b class="t">理论模型</b>
+            <p>依据已知物理规律推演出来的过程描述，而这个过程本身很难被从头看到尾。看到这个标签，你可以追问：<b>"这一步是被看到的，还是被推出来的？"</b></p></div>
+          <div class="gcard open"><span class="gl">LEVEL C</span><b class="t">仍在研究</b>
+            <p>学界尚无定论的开放问题，即使研究对象本身已经被观测到。看到这个标签，你应当知道：<b>这里没有标准答案，教科书也可能改写。</b></p></div>
+        </div>
+
+        <div class="eg">
+          <h4>例子一：同样写在科普里，"可信"的来源可能是两种不同的东西</h4>
+          <ol>
+            <li>「恒星一生的大部分时间处于主序阶段，核心稳定地把氢聚变为氦」——标为<b>观测证据</b>。不同质量恒星在赫罗图上的分布、它们的光谱与光度特征，都是可反复核对的观测事实。</li>
+            <li>「原恒星靠引力收缩聚集物质、中心升温」——标为<b>理论模型</b>。恒星形成过程历时漫长且常被尘埃遮挡，无法端到端地观看；它主要由物理定律推演得出，用来解释我们看到的现象。</li>
+          </ol>
+          <p style="margin-top:6px">两者都值得相信，但相信的<b>理由不同</b>：一个靠观测，一个靠推演。分清之后你就知道，哪一种更可能在将来被新的观测修正。</p>
+        </div>
+
+        <div class="eg">
+          <h4>例子二：同一个天体，可以同时拥有观测证据和未解之谜——中子星</h4>
+          <p>中子星本身的存在是被观测支持的（脉冲星信号已被长期记录），但"中子星内部在极端密度下处于什么物质状态"至今<b>仍在研究</b>。所以它的证据类型字段写的是「观测证据 · 内部结构仍在研究」——而不是笼统地说"科学家已经搞清楚了"。<b>把一个天体的"存在"和它的"内部细节"混为一谈，是科普里最常见的跳跃。</b></p>
+        </div>
+
+        <p><b>为什么科普要区分它们：</b>① 防止把阶段性理解讲成定论；② 让读者知道自己可以在哪里质疑、去查哪一类来源；③ 帮助建立正确的科学观——科学结论的强度是分级的，会随新证据更新。本页的三类标签由团队依据 NASA 科普页面的表述人工标注，<b>内容尚待天文或科学教育人员专业审阅</b>（见作品说明「验证与测试自查」）。</p>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><b>星图 · 点选一个观察对象</b><span class="label">SKY / 8 NODES</span></div>
+      <div class="sky">
+        <div class="nebula"></div>
+        <button class="node n1" data-id="nebula" aria-pressed="false"><b>✧</b>星云</button>
+        <button class="node n2" data-id="protostar" aria-pressed="false"><b>❋</b>原恒星</button>
+        <button class="node n3" data-id="mainseq" aria-pressed="false"><b>✦</b>主序星</button>
+        <button class="node n4" data-id="sun" aria-pressed="false"><b>☼</b>太阳</button>
+        <button class="node n5" data-id="redgiant" aria-pressed="false"><b>◉</b>红巨星</button>
+        <button class="node n6" data-id="supernova" aria-pressed="false"><b>❈</b>超新星遗迹</button>
+        <button class="node n7" data-id="neutron" aria-pressed="false"><b>✺</b>中子星</button>
+        <button class="node n8" data-id="whitedwarf" aria-pressed="false"><b>◦</b>白矮星</button>
+      </div>
+      <div class="map-foot">示意星图，不代表实际星空方位与距离比例。点击节点查看与之关联的知识条目与证据卡。</div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <b>证据导览台</b>
+        <span class="label">CLAIM → SOURCE</span>
+      </div>
+      <div class="answer">
+        <div class="label">常见问题 · 点选查看</div>
+        <div class="ask" id="questions"></div>
+        <form class="questionbar" id="questionForm">
+          <label class="sr-only" for="questionInput">在本地知识范围内提问</label>
+          <input id="questionInput" type="search" placeholder="试问：太阳会变成黑洞吗？">
+          <button type="submit">查找证据</button>
+        </form>
+        <p class="query-note" id="queryNote" aria-live="polite">只检索本页已收录的 8 条知识条目；未命中时明确提示，不调用生成式模型。</p>
+
+        <div class="claim" id="claim"></div>
+        <div class="why-label">这条结论靠什么支持</div>
+        <p class="why" id="why"></p>
+        <div class="evidence" id="evidence"></div>
+        <div id="missBox"></div>
+      </div>
+
+      <div class="quiz">
+        <h2>形成性测验 · 3 组 × 3 题</h2>
+        <p class="quiz-progress" id="quizProgress">已答题数 0 / 9 · 正确数 0 / 9</p>
+        <div class="tabs" id="quizTabs" role="tablist"></div>
+        <div id="quizBody"></div>
+        <div class="quiz-foot">
+          <button class="linkbtn plain" id="redoQuiz" type="button">重做本测验</button>
+          <button class="linkbtn plain" id="exportRecord" type="button">导出学习档案（JSON）</button>
+        </div>
+      </div>
+
+      <p class="note">内容摘要依据 NASA 面向公众的恒星演化资料编写，来源链接为 NASA 官方科普页面。本页为离线演示原型，不调用任何在线模型 API；科学表述与教学适配说明在正式申报前由团队逐条复核。</p>
+    </section>
+
+    <section class="panel full" aria-labelledby="pathTitle">
+      <div class="panel-head"><b id="pathTitle">引导式学习路径 · 从星云到恒星遗迹</b><span class="label">GUIDED INQUIRY</span></div>
+      <div class="path">
+        <div class="path-head">
+          <p style="margin:0;max-width:640px;font-size:12px;color:#cfd3e6">这不是检索工具的操作说明，而是一条<b>有先后顺序的探究任务</b>：先建立演化顺序 → 再读证据 → 练习判断 → 完成测验 → 用自己的话说一遍。全部完成后，下方自动生成学习凭证并可导出。</p>
+          <label style="font-size:11px;color:var(--muted)">学习者标识（可选，仅存在本机）<br>
+            <input class="learner" id="learnerId" type="text" placeholder="如：初二3班-07" autocomplete="off">
+          </label>
+        </div>
+        <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" aria-label="学习路径进度"><i id="pathBar"></i></div>
+        <p class="meta" id="pathMeta" aria-live="polite">已完成 0 / 5 步</p>
+        <div id="pathSteps"></div>
+        <div id="credential" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="panel full" aria-labelledby="teacherTitle">
+      <div class="panel-head"><b id="teacherTitle">教师视图 · 本机汇总</b><span class="label">LOCAL-ONLY</span></div>
+      <div class="teacher">
+        <p style="margin:0 0 9px;font-size:12px;color:#cfd3e6">把学生导出的学习档案 JSON 粘贴到下方，或选择多个文件上传，即可汇总班级情况。<b>所有解析与统计都在你的浏览器里完成，数据不上传任何服务器</b>，本页也不发起任何网络请求；关闭或刷新页面后本机数据即清空。</p>
+        <label class="sr-only" for="teacherInput">粘贴一个或多个学习档案 JSON</label>
+        <textarea id="teacherInput" placeholder='粘贴学习档案 JSON（单个对象或多个对象组成的数组均可）…'></textarea>
+        <div class="tfile">
+          <input id="teacherFiles" type="file" accept=".json,application/json,text/plain" multiple aria-label="选择学习档案 JSON 文件（可多选）">
+          <button class="linkbtn plain" id="teacherParse" type="button">解析并汇总</button>
+          <button class="linkbtn plain" id="teacherSample" type="button">填入本机当前档案</button>
+          <button class="linkbtn plain" id="teacherClear" type="button">清空本机数据</button>
+          <button class="linkbtn plain" id="teacherExport" type="button" disabled>导出班级汇总 CSV</button>
+        </div>
+        <p class="meta" id="teacherNote" role="status" style="font-size:11px;color:var(--muted);margin:9px 0 0">尚未导入任何档案。</p>
+        <div id="teacherOut"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="mask" id="mask" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle" aria-hidden="true">
+  <div class="drawer-head">
+    <b id="drawerTitle">作品说明</b>
+    <button class="ghost" id="closeInfo" type="button">关闭 Esc</button>
+  </div>
+  <div class="drawer-body">
+    <h3>1 · 作品简介与目标用户</h3>
+    <p>《星问》是一个面向<b>中学生与天文初学者</b>的恒星演化导览工具。使用者点选星图上的天体、或输入一个问题，系统会给出一条结论，并同时说明这条结论的<b>适用范围、证据类型、来源与复核状态</b>。</p>
+    <p>设计目标不是"回答更多问题"，而是帮助初学者建立一种习惯：看到结论时，先追问它靠什么支持、在什么范围内成立。目标使用场景为课堂自学、天文社团活动与科普展览中的自助查询。</p>
+
+    <h3>2 · 适用学段与教学目标（教学设计）</h3>
+    <p><b>适用学段与受众：</b></p>
+    <ul>
+      <li><b>初中科学（7–9 年级）</b>：作为"地球与宇宙"主题的课后探究材料，重点放在"用证据说话"，不涉及计算。</li>
+      <li><b>高中地理／天文模块</b>：作为恒星演化单元的预习或复习支架，重点放在适用范围与证据分级的辨析。</li>
+      <li><b>天文社团与科技馆科普场景</b>：作为自助查询终端或社团活动任务单，学习者可按「引导式学习路径」独立完成一轮探究。</li>
+    </ul>
+    <p><b>内容目标：</b>围绕"恒星演化的顺序与结局"一条主线，收录 8 条知识；每条只包含能被公开来源支持的表述，不以覆盖面广度为取舍。</p>
+    <p><b>教学目标与对应交互环节（每条目标在作品中都有落点）：</b></p>
+    <ol>
+      <li><b>目标 1 · 能区分观测证据、理论模型与仍在研究三种支持方式。</b>落点：页面顶部「什么是证据分级」说明区的两个对照例子，以及引导式学习路径<b>第 3 步</b>（给 3 条结论分级，答错可重做）。</li>
+      <li><b>目标 2 · 能说出一条结论的适用范围。</b>落点：每张证据卡中的「适用范围」字段，以及引导式学习路径<b>第 2 步</b>（逐条勾选"已读适用范围"，至少 3 条）。</li>
+      <li><b>目标 3 · 遇到未收录的问题会主动查证，而不是接受一个编造的答案。</b>落点：提问未命中时的拒答提示与「建议查证方向」清单，以及引导式学习路径<b>第 5 步</b>的开放题作答。</li>
+    </ol>
+    <p><b>达成标记怎么来的：</b>三条目标在学习档案中输出"达成／进行中／未开始"，依据依次为：分级判题正确题数、已标记阅读的适用范围条数、本机是否出现过范围外提问与是否提交开放题。<span class="tag">本机自评</span>这些标记<b>由本机交互自动采集，只反映一次使用过程，不等同于经过验证的教学效果测量</b>（课堂前测与后测尚未开展，见第 8 节）。</p>
+
+    <h3>3 · 创新点（三条）</h3>
+    <ol>
+      <li><b>证据链可视化的知识卡片</b>：每条结论被拆成"简明结论 / 适用范围 / 证据类型 / 来源名称与链接 / 复核状态"五个字段，证据不再是脚注，而是与结论同等权重的界面主元素。常见天文科普 App 通常只给结论与配图，读者无法判断结论的适用边界。</li>
+      <li><b>来源可追溯</b>：每条结论固定绑定一个可点击的公开来源（NASA 官方科普页面），并有独立的"这条结论靠什么支持"引导语；读者可一键跳转原始页面自行核对，而不是停留在二手转述。</li>
+      <li><b>范围外明确拒答</b>：系统只做本地关键词与同义词表匹配。未命中时显示"证据不足，本条目未收录"，并给出<b>建议查证方向</b>（应查阅哪一类公开来源），不生成任何事实性答案。这与"用生成式模型补全一切"的常见做法相反，把"不知道"作为一种可交付的输出。</li>
+    </ol>
+
+    <h3>4 · 证据分级与引用规范</h3>
+    <p><b>分级标准：</b>页面顶部「什么是证据分级」说明区给出具体例子，此处给出判定口径——</p>
+    <ul>
+      <li><b>观测证据</b>：该表述可由望远镜观测数据直接或较直接支持；</li>
+      <li><b>理论模型</b>：该表述是由已知物理规律推演出的过程描述，难以端到端观测；</li>
+      <li><b>仍在研究</b>：学界尚无定论；若同一条目同时含两种成分，则在字段中并列写出（如中子星条目）。</li>
+    </ul>
+    <p>三类标签由团队依据 NASA 科普页面的表述人工标注，<b>尚待天文或科学教育人员专业审阅</b>。</p>
+    <p><b>引用格式：</b>每条知识在证据卡中提供可复制的引用行，格式为「来源名称《页面标题》，链接（访问日期：由引用者填写）」。访问日期留空，由引用者按实际访问日期补齐，避免出现在未访问的情况下冒用访问日期。</p>
+    <p><b>收录筛选标准（四条，缺一不收）：</b></p>
+    <ul>
+      <li>① 必须有<b>公开可访问的来源页面</b>（本页仅使用 NASA 官方科普页面），无公开来源的条目不收录；</li>
+      <li>② 必须是<b>面向公众的成熟表述</b>，不收录存在争议的具体数值与研究前沿；</li>
+      <li>③ 必须<b>写得出适用范围</b>——写不出适用范围的表述不收录；</li>
+      <li>④ 只收<b>恒星演化主线</b>上的内容；黑洞、宇宙学参数等超出范围的话题一律明确拒答并给出查证方向，不临时补写答案。</li>
+    </ul>
+
+    <h3>5 · 引导式学习路径、学习凭证与教师视图</h3>
+    <p><b>引导式学习路径「从星云到恒星遗迹」</b>：5 步探究任务——① 沿演化链看 5 个节点 → ② 逐条阅读「适用范围」（至少 3 条）→ ③ 给 3 条结论做证据分级（可重试）→ ④ 完成形成性测验中至少 6 题 → ⑤ 回答一道开放题（不少于 30 字；系统不判分，只记录字数与是否提交）。每步都有<b>进度条、"已完成"标记与首次完成时间</b>；路径不替代自由检索，随时可以回到星图随意点。</p>
+    <p><b>学习凭证：</b>5 步全部完成后自动生成，含使用者自填的学习者标识、各步完成时间与<b>三条教学目标的达成标记</b>，可导出 <code>star-pathway-certificate.json</code>；同样内容也会写入学习档案。<b>凭证由本机生成，不代表任何外部机构的认定。</b></p>
+    <p><b>教师视图：</b>可粘贴或上传多条学习档案 JSON，在本机汇总参与人数、测验平均正确率、高频错题、高频未命中问题与教学目标达成人数，并导出 <code>star-class-summary.csv</code>（带 BOM，Excel 可直接打开）。<b>全部解析与统计在浏览器本地完成，不上传服务器、不发起任何网络请求</b>；导入的数据只存于内存，清空或刷新即消失。用户粘贴的 JSON 均经过 <code>try/catch</code> 与字段校验，失败时给出具体原因而不是静默忽略。</p>
+
+    <h3>6 · 技术路线</h3>
+    <ul>
+      <li>纯 HTML + CSS + 原生 JavaScript 单文件实现，<b>无构建步骤、无外部依赖、无网络请求</b>。</li>
+      <li>检索方式为<b>本地规则检索</b>：关键词表 + 手写同义词表按最长匹配命中，返回内置知识卡片。</li>
+      <li><b>不调用任何生成式模型或在线模型 API</b>，所有回答均来自内置条目，结果可复现、可审计。</li>
+      <li>知识卡片以数据结构内置于页面脚本中，星图与节点为代码绘制（CSS 渐变与定位），不使用位图素材。</li>
+      <li>学习档案与学习凭证在浏览器本地生成并以 JSON 文件下载；班级汇总 CSV 同样在本地生成，数据不出本机。</li>
+      <li>引导式学习路径与教师视图均为同一文件内的原生脚本，无任何后端、无 <code>localStorage</code> 持久化；刷新页面即从空白状态开始。</li>
+    </ul>
+
+    <h3>7 · 操作与运行说明</h3>
+    <ol>
+      <li>双击或直接用浏览器打开 <code>star.html</code> 即可运行，无需安装环境、无需联网。</li>
+      <li>左侧星图含 8 个天体节点，点击或使用 Tab + Enter 选择，右侧同步显示证据卡。</li>
+      <li>在输入框中提问（如"太阳会变成黑洞吗""红巨星""脉冲星"），系统做本地匹配；命中则展示条目与证据，未命中则给出拒答提示与查证方向。</li>
+      <li>完成形成性测验（3 组 × 3 题）后即时查看解析，并可通过"查看证据卡"回链到对应条目。</li>
+      <li>页面顶部的「什么是证据分级」建议先看：它解释后面每张证据卡里的"证据类型"字段。</li>
+      <li>点击"导出学习档案"可下载 <code>star-learning-record.json</code>，含查看过的节点、提问记录、测验结果，以及<b>学习路径完成情况与教学目标达成标记</b>。</li>
+      <li>「引导式学习路径」为一条 5 步任务，逐步完成后自动生成可导出的学习凭证 <code>star-pathway-certificate.json</code>。</li>
+      <li>「教师视图」粘贴或上传多条学习档案 JSON，本机汇总后可导出 <code>star-class-summary.csv</code>；刷新页面即清空全部本机数据。</li>
+      <li>右上角"作品说明"打开本抽屉，按 Esc 或点击遮罩关闭。</li>
+    </ol>
+
+    <h3>8 · 验证与测试自查</h3>
+    <p><b>已完成（团队自行核对）：</b></p>
+    <ul>
+      <li><span class="tag">已完成</span><b>公开资料自行核对：</b>知识条目依据 NASA 科普页面（页面内已有真实链接）逐条自行核对；本作品<b>未调用生成式模型</b>，全部回答均来自内置条目。</li>
+      <li><span class="tag">已完成</span><b>页面功能走查：</b>按操作路径逐项验证导出文件（<code>star-learning-record.json</code> 字段与时间戳）、键盘操作（Tab + Enter 选择节点、焦点样式可见）、移动端单列布局、减少动效（<code>prefers-reduced-motion</code>）、边界提示（提问未命中时给出拒答与查证方向）、外链均带 <code>rel="noopener"</code>、新增模块自查（引导式学习路径 5 步的可完成性、学习凭证导出字段、教师视图对非法 JSON／非对象项／缺字段项的错误提示、班级汇总 CSV 导出）；脚本语法检查（Node <code>--check</code>）通过。</li>
+      <li><span class="tag">已完成</span><b>代码与第三方资源自查：</b>无外部依赖、星图与节点均由代码（CSS 渐变与定位）绘制、无未授权第三方素材。</li>
+    </ul>
+    <p><b>尚未开展（如实列出，不作已完成陈述）：</b></p>
+    <ul>
+      <li><span class="tag">未开展</span><b>专业审阅：</b>未邀请天文或科学教育专业人员审阅条目内容与措辞。</li>
+      <li><span class="tag">未开展</span><b>独立核算：</b>条目转述自公开科普页面，未由团队独立核算或比对原始文献，未接入任何实时天文数据源。</li>
+      <li><span class="tag">未开展</span><b>用户测试：</b>未开展目标用户任务测试，未在课堂场景中开展前测与后测数据采集。</li>
+      <li><span class="tag">未开展</span><b>教师端试用：</b>引导式学习路径与教师视图尚未由学科教师在真实班级中试用，班级汇总结果也未与纸质／平台成绩做过一致性比对。</li>
+    </ul>
+    <p><b>后续计划：</b></p>
+    <ul>
+      <li><span class="tag">计划</span>邀请天文或科学教育专业人员审阅全部条目并修订措辞。负责人：吴昊（团队负责人）；时间：赛后 1 个月内。</li>
+      <li><span class="tag">计划</span>逐条比对 NASA 原始科普页面文本，标注引用出处与核对日期。负责人：吴昊（团队负责人）；时间：赛后 1 个月内。</li>
+      <li><span class="tag">计划</span>在课堂场景开展前测与后测数据采集与效果分析。负责人：吴昊（团队负责人）；时间：赛后 2 个月内。</li>
+      <li><span class="tag">计划</span>邀请学科教师试用引导式学习路径与教师视图，并核对班级汇总 CSV 的字段是否满足实际教学统计需要。负责人：吴昊（团队负责人）；时间：赛后 2 个月内。</li>
+    </ul>
+    <p><b>一句话原则：本材料的表述与作品实际完成状态一致，未开展的专业审阅、实地测绘与用户测试均如实列为后续工作，未以任何形式宣称已完成。</b></p>
+
+    <h3>9 · AI 使用与素材说明</h3>
+    <ul>
+      <li>AI 使用情况：代码与界面文案在 AI 辅助下生成与润色，全部逻辑由团队审阅并修改。</li>
+      <li>知识内容：条目摘要依据 NASA 面向公众的恒星演化资料编写，来源为 NASA 官方科普页面链接。</li>
+      <li>视觉素材：星图、节点、星云均由代码（CSS 渐变与布局）绘制，未使用第三方图片素材。</li>
+      <li>团队原创贡献：主创 吴昊（团队负责人）：整体设计、证据分级体系与学习路径定调、最终把关。技术实现 徐志：证据卡数据结构、测验与解析回链、教师视图、关键词匹配。内容与设计 苏张柏绮：条目内容撰写、证据分级体系、引导式学习路径、界面与版式。全部代码、文案与视觉元素由团队自行完成，未使用第三方图片、字体、图标或音频素材。</li>
+    </ul>
+
+    <h3>10 · 版本与变更记录</h3>
+    <p>日期与公开仓库的提交历史一致，可逐次核对：<code>github.com/junming49/blue-boundary-coral-reef/commits/main</code> 。</p>
+    <ul>
+      <li><b>v1</b>（2026-10-17）：8 个天体节点的五字段证据卡、本地关键词与同义词检索、范围外明确拒答并给出查证方向、3 组 × 3 题形成性测验带解析回链、学习档案 JSON 导出。</li>
+      <li><b>v2</b>（2026-10-18）：新增右上角「作品说明」抽屉；把「验证与自查」改写为"已完成／尚未开展／后续计划"的如实口径；补齐键盘可达、移动端单列与 <code>prefers-reduced-motion</code> 适配。</li>
+      <li><b>v3</b>（2026-10-18）：新增「什么是证据分级」说明区、教学设计分区（适用学段与 3 条教学目标）、引导式学习路径与学习凭证、教师视图（本机汇总与 CSV 导出）、每条知识的引用格式与收录筛选标准、版本与变更记录。</li>
+      <li><b>v4</b>（2026-10-22）：提交版整理——补齐团队原创贡献清单与真实署名；版本记录补入实际日期并接入公开仓库；全文去除占位表述。</li>
+    </ul>
+
+    <h3>11 · 边界声明</h3>
+    <ul>
+      <li>关键词命中<b>不等于</b>理解自然语言：系统只做字面与同义词匹配，可能漏掉含义正确但用词不同的提问。</li>
+      <li>本作品<b>不调用生成式模型</b>，不会为未收录问题编造答案；收录范围有限，不等同于开放域问答系统。</li>
+      <li>全部条目<b>内容待天文或科学教育人员专业审阅</b>，当前不可作为正式教学结论或考试依据。</li>
+      <li>示意星图不代表真实星空方位、距离与亮度比例。</li>
+      <li>学习凭证、教学目标达成标记与班级汇总<b>仅为本机交互的自评记录</b>，未经课堂实测验证，不能作为学习效果评价的正式依据。</li>
+    </ul>
+  </div>
+</aside>
+
+<script>
+/* ===== 数据来源：沿用 NASA 官方科普页面，不杜撰新链接 ===== */
+const SRC_LIFECYCLE = 'https://science.nasa.gov/mission/webb/star-lifecycle/';
+const SRC_SUN = 'https://science.nasa.gov/big-idea-3-3-intermediate-level-guiding-question/';
+const REVIEW = '待天文或科学教育人员审阅';
+
+/* ===== 8 个天体节点的知识条目 ===== */
+const NODES = [
+  { id:'nebula', name:'星云', glyph:'✧',
+    claim:'恒星诞生于气体与尘埃组成的星云之中，星云是恒星演化叙事的起点。',
+    why:'星云提供恒星形成所需的物质：引力使云中的气体与尘埃逐渐聚集。本条只概述形成路径，不讨论具体星云的距离或质量数值。',
+    scope:'适用于"恒星形成阶段"的入门概述；不适用于具体星云参数的查询。',
+    evType:'观测证据',
+    srcName:'NASA Science · Star Lifecycle（Stellar Nurseries 部分）', srcUrl:SRC_LIFECYCLE,
+    keys:['星云','气体','尘埃','分子云','诞生','形成','恒星诞生','星云物质'] },
+
+  { id:'protostar', name:'原恒星', glyph:'❋',
+    claim:'星云物质在引力作用下收缩聚集、中心升温，形成原恒星；此时尚未开始稳定的氢聚变。',
+    why:'引力收缩使物质向中心下落并释放能量，中心温度升高；只有当核心条件足以维持氢聚变时，才进入主序阶段。',
+    scope:'适用于恒星形成早期阶段的定性描述；不涉及具体时标与质量阈值。',
+    evType:'理论模型',
+    srcName:'NASA Science · Star Lifecycle（Star Formation 部分）', srcUrl:SRC_LIFECYCLE,
+    keys:['原恒星','引力','坍缩','塌缩','收缩','吸积','升温','原恒星阶段','protostar'] },
+
+  { id:'mainseq', name:'主序星', glyph:'✦',
+    claim:'恒星一生的大部分时间处于主序阶段：核心稳定地把氢聚变为氦。',
+    why:'主序阶段的特征是核心氢聚变提供的向外压力与引力达到平衡。恒星质量会影响它消耗燃料的速度，因此不同质量恒星的演化路径并不相同。',
+    scope:'适用于主序阶段的定性描述；不提供具体寿命数值，也不做赫罗图定量判读。',
+    evType:'观测证据',
+    srcName:'NASA Science · Star Lifecycle（Main Sequence 部分）', srcUrl:SRC_LIFECYCLE,
+    keys:['主序','主序星','氢聚变','聚变','燃料','恒星质量','寿命','稳定燃烧','main sequence'] },
+
+  { id:'sun', name:'太阳', glyph:'☼',
+    claim:'太阳是一颗主序星，目前正处于稳定进行氢聚变的阶段。',
+    why:'太阳被用作理解恒星演化的参照对象：它处于主序阶段，因此可以把对太阳的认识推广到同类恒星的主序阶段，但不能推广到所有演化阶段。',
+    scope:'适用于以太阳为参照的恒星阶段说明；不涉及太阳活动预报与观测安全指导。',
+    evType:'观测证据',
+    srcName:'NASA Science · Star Lifecycle（Main Sequence 部分）', srcUrl:SRC_LIFECYCLE,
+    keys:['太阳','日','太阳系','太阳阶段','sun','太阳会','太阳最终'] },
+
+  { id:'redgiant', name:'红巨星', glyph:'◉',
+    claim:'类似太阳的恒星在核心氢耗尽后外层膨胀、变亮变红，进入红巨星阶段。',
+    why:'核心氢聚变结束后，恒星结构重新调整，外层扩张而表面温度下降，呈现红巨星特征。这是中低质量恒星晚期的演化阶段，而非所有恒星的必经描述。',
+    scope:'适用于中低质量恒星晚期演化的概述；不提供具体半径与光度数值。',
+    evType:'理论模型',
+    srcName:'NASA Science · Star Lifecycle（Red Giant 部分）', srcUrl:SRC_LIFECYCLE,
+    keys:['红巨星','膨胀','变红','氦','氦聚变','晚期','巨星','red giant'] },
+
+  { id:'supernova', name:'超新星遗迹', glyph:'❈',
+    claim:'大质量恒星晚期可能以超新星爆发结束，抛出的物质形成持续扩散的超新星遗迹。',
+    why:'大质量恒星的晚期结局与中低质量恒星不同，超新星爆发把外层物质抛向周围空间，形成可被观测的遗迹结构。',
+    scope:'适用于大质量恒星结局的概述；不讨论爆发机制细节与光变曲线数值。',
+    evType:'观测证据',
+    srcName:'NASA Science · Star Lifecycle（Supernova / Remnant 部分）', srcUrl:SRC_LIFECYCLE,
+    keys:['超新星','遗迹','爆发','爆炸','蟹状星云','大质量','坍缩核心','supernova'] },
+
+  { id:'neutron', name:'中子星', glyph:'✺',
+    claim:'大质量恒星核心坍缩后可能留下极其致密的中子星；更极端的坍缩产物（如黑洞）不在本作品收录范围内。',
+    why:'核心坍缩后的致密残骸是恒星演化的一个可能终点。中子星有明确的观测支持，而黑洞属于本作品明确声明的收录范围之外，此处只做边界说明，不予展开。',
+    scope:'适用于恒星遗迹的定性介绍；不给出密度、半径等数值，也不展开黑洞相关内容。',
+    evType:'观测证据 · 内部结构仍在研究',
+    srcName:'NASA Science · Star Lifecycle（High-mass Stars 部分）', srcUrl:SRC_LIFECYCLE,
+    keys:['中子星','脉冲星','致密','中子','neutron star','pulsar'] },
+
+  { id:'whitedwarf', name:'白矮星', glyph:'◦',
+    claim:'类似太阳的恒星最终会留下致密残骸——白矮星，并逐渐冷却；太阳不会变成黑洞。',
+    why:'中低质量恒星的结局与大质量恒星不同：它不会以超新星或黑洞收场，而是留下白矮星。把一种结局推广给所有恒星是常见的误解，本条正是用于纠正这一点。',
+    scope:'适用于中低质量恒星最终结局的说明；不提供冷却时标等具体数值。',
+    evType:'观测证据',
+    srcName:'NASA Science · Big Idea 3.3（Sun-like Star 演化教学资料）', srcUrl:SRC_SUN,
+    keys:['白矮星','太阳结局','残骸','冷却','简并','太阳变成','white dwarf'] }
+];
+
+/* ===== 证据分级与来源页面标题：集中登记，便于逐条核对 ===== */
+const NODE_META = {
+  nebula:     { grade:'观测证据',                 srcTitle:'Star Lifecycle（恒星生命周期）' },
+  protostar:  { grade:'理论模型',                 srcTitle:'Star Lifecycle（恒星生命周期）' },
+  mainseq:    { grade:'观测证据',                 srcTitle:'Star Lifecycle（恒星生命周期）' },
+  sun:        { grade:'观测证据',                 srcTitle:'Star Lifecycle（恒星生命周期）' },
+  redgiant:   { grade:'理论模型',                 srcTitle:'Star Lifecycle（恒星生命周期）' },
+  supernova:  { grade:'观测证据',                 srcTitle:'Star Lifecycle（恒星生命周期）' },
+  neutron:    { grade:'混合：观测证据 + 仍在研究', srcTitle:'Star Lifecycle（恒星生命周期）' },
+  whitedwarf: { grade:'观测证据',                 srcTitle:'Big Idea 3.3 Intermediate Level Guiding Question（类太阳恒星演化教学资料）' }
+};
+NODES.forEach(n => { Object.assign(n, NODE_META[n.id]); });
+
+/* 生成引用格式：来源名称《页面标题》链接（访问日期留空，由引用者按实际填写） */
+function citeOf(d) {
+  return d.srcName + '《' + d.srcTitle + '》，' + d.srcUrl + '（访问日期：由引用者按实际访问日期补填）';
+}
+
+/* ===== 同义词表：词 → 条目；partial 表示"接近条目但原词未收录" ===== */
+const SYNONYMS = {
+  '黑洞':{ id:'neutron', partial:true, note:'关键词"黑洞"指向核心坍缩类遗迹，但本作品未收录黑洞条目；下方为最接近的中子星条目，请先阅读其适用范围。' },
+  '事件视界':{ id:'neutron', partial:true, note:'关键词"事件视界"属于黑洞相关概念，本作品未收录；下方为最接近的中子星条目。' },
+  '引力坍缩':{ id:'protostar' },
+  '塌缩':{ id:'protostar' },
+  '聚变':{ id:'mainseq' },
+  '核聚变':{ id:'mainseq' },
+  '燃烧':{ id:'mainseq' },
+  '恒星的寿命':{ id:'mainseq' },
+  '晚年':{ id:'redgiant' },
+  '老年':{ id:'redgiant' },
+  '爆发':{ id:'supernova' },
+  '爆炸':{ id:'supernova' },
+  '星星是怎么来的':{ id:'nebula' },
+  '恒星是怎么形成的':{ id:'nebula' },
+  '太阳会变成黑洞吗':{ id:'whitedwarf' },
+  '太阳的结局':{ id:'whitedwarf' },
+  '太阳最后':{ id:'whitedwarf' },
+  '太阳死亡':{ id:'whitedwarf' }
+};
+
+/* ===== 形成性测验：3 组 × 3 题 ===== */
+const QUIZ = [
+  { group:'第一组 · 诞生与形成', qs:[
+    { q:'在恒星演化的入门叙述中，恒星诞生于什么环境？', opts:['气体与尘埃组成的星云','白矮星的残骸','行星的表面'], correct:0,
+      explain:'NASA 的恒星生命周期资料把恒星形成与气体、尘埃云联系起来。', link:'nebula' },
+    { q:'原恒星阶段的关键特征是什么？', opts:['引力收缩、中心升温，尚未稳定进行氢聚变','已经开始稳定的氦聚变','已经发生超新星爆发'], correct:0,
+      explain:'原恒星靠引力收缩聚集物质并升温，稳定的氢聚变要到主序阶段才建立。', link:'protostar' },
+    { q:'哪一项因素会显著影响恒星的演化路径与寿命长短？', opts:['恒星的质量','观测者所在的城市','恒星名字的长度'], correct:0,
+      explain:'NASA 资料指出，质量影响恒星消耗燃料的速度，进而影响演化路径。', link:'mainseq' }
+  ]},
+  { group:'第二组 · 稳定与膨胀', qs:[
+    { q:'主序星之所以能长期稳定，是因为核心在做什么？', opts:['把氢稳定地聚变为氦','把铁聚变为金','停止一切核反应'], correct:0,
+      explain:'主序阶段的能量来源是核心的氢聚变，向外的压力与引力达到平衡。', link:'mainseq' },
+    { q:'关于太阳当前所处的阶段，下列说法正确的是？', opts:['太阳是一颗主序星，正在进行氢聚变','太阳已经进入红巨星阶段','太阳已经变成白矮星'], correct:0,
+      explain:'太阳目前处于主序阶段，稳定的氢聚变是它的主要特征。', link:'sun' },
+    { q:'类似太阳的恒星在核心氢耗尽后会发生什么？', opts:['外层膨胀、变亮变红，进入红巨星阶段','立刻变成黑洞','立刻停止发光并消失'], correct:0,
+      explain:'核心氢耗尽后恒星结构重新调整，外层扩张、表面变红，这是红巨星阶段。', link:'redgiant' }
+  ]},
+  { group:'第三组 · 结局与遗迹', qs:[
+    { q:'大质量恒星的晚期可能以哪种事件结束？', opts:['超新星爆发','月相变化','木星凌日'], correct:0,
+      explain:'NASA 资料描述了大质量恒星晚期核心坍缩并发生超新星的演化路径。', link:'supernova' },
+    { q:'关于"太阳最终会变成黑洞吗"，最符合本页资料的说法是？', opts:['不会，太阳这类恒星的结局是留下白矮星','会，所有恒星都会变成黑洞','目前已经观测到太阳变成黑洞'], correct:0,
+      explain:'NASA 教学资料说明，太阳这类恒星最终留下白矮星；把一种结局推广给所有恒星是常见误解。', link:'whitedwarf' },
+    { q:'本作品对"黑洞"这一概念的处理方式是？', opts:['明确声明未收录，并提示查阅公开来源','直接给出黑洞的详细参数','用生成式模型临时补写答案'], correct:0,
+      explain:'范围外问题一律拒答并给出建议查证方向，绝不编造答案，也不调用生成式模型。', link:'neutron' }
+  ]}
+];
+
+/* ===== 运行时状态 ===== */
+const byId = {};
+NODES.forEach(n => { byId[n.id] = n; });
+let current = 'sun';
+const answers = {};                 // 键："组序-题序"，值：{ picked, ok }
+let activeGroup = 0;
+const record = { viewed: [], asked: [] };   // 查看过的节点 / 提过的问题
+const viewedIndex = {};
+
+const $ = id => document.getElementById(id);
+
+/* 记录一次节点查看（去重并计数） */
+function logView(id) {
+  const n = byId[id];
+  if (!viewedIndex[id]) {
+    viewedIndex[id] = { 节点: n.name, id: id, 首次查看时间: new Date().toISOString(), 查看次数: 1 };
+    record.viewed.push(viewedIndex[id]);
+  } else {
+    viewedIndex[id].查看次数++;
+  }
+}
+
+/* 同步星图节点与常见问题按钮的选中态 */
+function syncSelection(id) {
+  document.querySelectorAll('.node').forEach(n => n.setAttribute('aria-pressed', String(n.dataset.id === id)));
+  document.querySelectorAll('#questions .q').forEach(q => q.setAttribute('aria-pressed', String(q.dataset.id === id)));
+}
+
+/* 渲染证据卡：结论 + 适用范围 + 证据类型 + 来源 + 复核状态 */
+function show(id) {
+  const d = byId[id];
+  if (!d) return;
+  current = id;
+  syncSelection(id);
+  logView(id);
+  $('claim').textContent = d.claim;
+  $('why').textContent = d.why;
+  $('evidence').innerHTML =
+    '<div class="ev-row"><span class="ev-k">简明结论</span><span class="ev-v">' + d.claim + '</span></div>' +
+    '<div class="ev-row"><span class="ev-k">适用范围</span><span class="ev-v">' + d.scope + '</span></div>' +
+    '<div class="ev-row"><span class="ev-k">证据类型</span><span class="ev-v"><span class="badge">' + d.evType + '</span></span></div>' +
+    '<div class="ev-row"><span class="ev-k">证据分级</span><span class="ev-v">' + d.grade + '</span></div>' +
+    '<div class="ev-row"><span class="ev-k">来源</span><span class="ev-v">' + d.srcName +
+      '<br><a href="' + d.srcUrl + '" target="_blank" rel="noopener">打开 NASA 来源页面 ↗</a></span></div>' +
+    '<div class="ev-row"><span class="ev-k">引用格式</span><span class="ev-v">' + citeOf(d) + '</span></div>' +
+    '<div class="ev-row"><span class="ev-k">复核状态</span><span class="ev-v"><span class="badge review">' + REVIEW + '</span></span></div>';
+  $('missBox').innerHTML = '';
+  renderPath();   // 节点查看会推进学习路径第 1 步
+}
+
+/* 提问：本地关键词 + 同义词表匹配（最长匹配优先） */
+function search(text) {
+  const q = String(text || '').trim().toLowerCase();
+  if (!q) return null;
+  const terms = [];
+  NODES.forEach(n => n.keys.forEach(k => terms.push({ term: k.toLowerCase(), id: n.id })));
+  Object.keys(SYNONYMS).forEach(s => {
+    const s2 = SYNONYMS[s];
+    terms.push({ term: s.toLowerCase(), id: s2.id, partial: !!s2.partial, note: s2.note || '' });
+  });
+  terms.sort((a, b) => b.term.length - a.term.length);
+  for (let i = 0; i < terms.length; i++) {
+    if (q.indexOf(terms[i].term) !== -1) return terms[i];
+  }
+  return null;
+}
+
+/* 未命中：明确拒答 + 建议查证方向，绝不编造答案 */
+function showMiss() {
+  current = null;
+  syncSelection(null);
+  $('claim').textContent = '证据不足，本条目未收录';
+  $('why').textContent = '为避免猜测，本原型不会为未收录的问题生成事实性答案，也不会调用生成式模型补全。';
+  $('evidence').innerHTML = '<div class="ev-row"><span class="ev-k">证据状态</span><span class="ev-v">未匹配到已收录条目（共 8 条）。</span></div>';
+  $('missBox').innerHTML =
+    '<div class="miss-box"><b>建议查证方向</b>：可查阅以下类型的公开来源，再回到本页核对——' +
+    '<ol><li>NASA 官方科普页面（按主题检索恒星演化相关条目）</li>' +
+    '<li>ESA 或 NASA 的观测任务图像与说明页面</li>' +
+    '<li>高校天文学公开课程与教材的对应章节</li>' +
+    '<li>天文馆、科技馆的展陈与科普资料</li>' +
+    '<li>专业文献检索库（如 NASA ADS）中的综述文章</li></ol></div>';
+}
+
+function answerQuestion(text) {
+  const raw = String(text || '').trim();
+  if (!raw) return;
+  const hit = search(raw);
+  const note = $('queryNote');
+  if (hit) {
+    if (hit.partial) {
+      note.className = 'query-note miss';
+      note.textContent = '部分命中：' + hit.note;
+      $('missBox').innerHTML = '<div class="miss-box"><b>范围提示</b>：' + hit.note + '</div>';
+    } else {
+      note.className = 'query-note';
+      note.textContent = '已匹配到本地条目「' + byId[hit.id].name + '」。答案与证据均来自已列明来源，未调用生成式模型。';
+      $('missBox').innerHTML = '';
+    }
+    show(hit.id);
+    record.asked.push({ 时间: new Date().toISOString(), 问题: raw, 命中情况: hit.partial ? '部分命中' : '命中', 匹配条目: byId[hit.id].name });
+  } else {
+    note.className = 'query-note miss';
+    note.textContent = '证据不足，本条目未收录：本地知识库仅有 8 条已列明来源的条目，未命中时不生成答案。';
+    showMiss();
+    record.asked.push({ 时间: new Date().toISOString(), 问题: raw, 命中情况: '未命中', 匹配条目: null });
+  }
+}
+
+/* ===== 测验渲染与判分 ===== */
+function totalQs() { return QUIZ.reduce((s, g) => s + g.qs.length, 0); }
+
+function updateProgress() {
+  const keys = Object.keys(answers);
+  const right = keys.filter(k => answers[k].ok).length;
+  $('quizProgress').textContent = '已答题数 ' + keys.length + ' / ' + totalQs() + ' · 正确数 ' + right + ' / ' + totalQs() + ' · 可随时点“重做本测验”';
+  renderPath();   // 测验进度会推进学习路径第 4 步
+}
+
+function renderQuiz() {
+  $('quizTabs').innerHTML = QUIZ.map((g, gi) =>
+    '<button class="tab" role="tab" aria-selected="' + (gi === activeGroup) + '" data-g="' + gi + '">' + g.group + '</button>').join('');
+  $('quizBody').innerHTML = QUIZ[activeGroup].qs.map((item, qi) => {
+    const key = activeGroup + '-' + qi;
+    const done = answers[key];
+    const opts = item.opts.map((o, oi) => {
+      let cls = 'opt';
+      if (done) {
+        if (oi === item.correct) cls += ' ok';
+        else if (oi === done.picked) cls += ' no';
+      }
+      return '<button type="button" class="' + cls + '" data-g="' + activeGroup + '" data-i="' + qi + '" data-o="' + oi + '"' +
+        (done ? ' disabled' : '') + '>' + String.fromCharCode(65 + oi) + ' · ' + o + '</button>';
+    }).join('');
+    let fb = '';
+    if (done) {
+      fb = '<div class="feedback">' + (done.ok ? '回答正确。' : '再看一下来源卡片：') + item.explain +
+        '<div><button type="button" class="linkbtn" data-link="' + item.link + '">查看证据卡：' + byId[item.link].name + ' ↗</button></div></div>';
+    }
+    return '<div class="qblock"><p class="qtext">' + (qi + 1) + '. ' + item.q + '</p><div class="opts">' + opts + '</div>' + fb + '</div>';
+  }).join('');
+
+  document.querySelectorAll('#quizTabs .tab').forEach(t => {
+    t.onclick = () => { activeGroup = +t.dataset.g; renderQuiz(); };
+  });
+  document.querySelectorAll('#quizBody .opt').forEach(b => {
+    b.onclick = () => {
+      const g = +b.dataset.g, i = +b.dataset.i, o = +b.dataset.o;
+      answers[g + '-' + i] = { picked: o, ok: o === QUIZ[g].qs[i].correct };
+      renderQuiz();
+      updateProgress();
+    };
+  });
+  document.querySelectorAll('#quizBody [data-link]').forEach(b => {
+    b.onclick = () => { show(b.dataset.link); document.getElementById('claim').scrollIntoView({ block: 'center' }); };
+  });
+  updateProgress();
+}
+
+/* ===== 学习档案导出 ===== */
+function buildRecord() {
+  const keys = Object.keys(answers);
+  const snap = pathSnapshot();
+  return {
+    作品: '星问 · 带证据链的天文导览伙伴',
+    导出时间: new Date().toISOString(),
+    声明: '本档案由浏览器本地生成，未上传服务器；条目内容待天文或科学教育人员审阅。',
+    学习者标识: learnerId() || '未填写',
+    查看过的节点: record.viewed,
+    提问记录: record.asked,
+    学习路径: {
+      任务: '从星云到恒星遗迹（5 步探究）',
+      步骤完成情况: snap,
+      完成步骤数: snap.filter(function(s){ return s.完成情况 === '已完成'; }).length,
+      总步骤数: STEPS.length,
+      是否全部完成: pathAllDone(),
+      开放题作答字数: openAnswer.trim().length
+    },
+    教学目标达成标记: goalMarks(),
+    测验结果: {
+      题目总数: totalQs(),
+      已答题数: keys.length,
+      正确数: keys.filter(k => answers[k].ok).length,
+      明细: keys.map(k => {
+        const p = k.split('-');
+        const g = +p[0], i = +p[1], item = QUIZ[g].qs[i];
+        return { 组: QUIZ[g].group, 题号: i + 1, 题面: item.q, 选择: item.opts[answers[k].picked], 是否正确: answers[k].ok, 关联条目: byId[item.link].name };
+      })
+    }
+  };
+}
+
+function exportRecord() {
+  downloadJSON(buildRecord(), 'star-learning-record.json');
+}
+
+/* ===== 引导式学习路径：「从星云到恒星遗迹」5 步探究任务 ===== */
+const STEP_NODES = ['nebula','protostar','mainseq','redgiant','whitedwarf'];
+const GRADE_OPTS = ['观测证据','理论模型','仍在研究'];
+
+/* 第 3 步的分级判题：答案与证据卡里的「证据类型」字段一一对应 */
+const GRADEQUIZ = [
+  { text:'恒星一生的大部分时间处于主序阶段，核心稳定地把氢聚变为氦。', correct:0, link:'mainseq',
+    explain:'这张证据卡的「证据类型」写的是观测证据——不同质量恒星的观测特征为它提供支持。' },
+  { text:'原恒星靠引力收缩聚集物质、中心升温，尚未开始稳定的氢聚变。', correct:1, link:'protostar',
+    explain:'这张证据卡的「证据类型」写的是理论模型——形成过程难以端到端观测，主要由物理规律推演。' },
+  { text:'中子星内部在极端密度下的物质状态究竟如何。', correct:2, link:'neutron',
+    explain:'中子星本身的存在有观测证据，但内部结构细节仍在研究，所以必须单独标出来，不能混为一谈。' }
+];
+
+/* 三条教学目标，每条都对应作品中的具体交互环节 */
+const GOALS = [
+  '能区分观测证据、理论模型与仍在研究三种支持方式',
+  '能说出一条结论的适用范围',
+  '遇到未收录的问题会主动查证，而不是接受一个编造的答案'
+];
+
+const readScope = new Set();   // 已标记阅读「适用范围」的条目 id
+const gradeAnswers = {};       // 分级判题：题序 → 选项序
+let openAnswer = '';           // 第 5 步开放题作答
+const stepDoneAt = {};         // 步骤序号 → 首次完成时间
+
+/* 每一步的主体内容（第 5 步只在首次挂载时渲染一次，避免打断正在输入的文字） */
+function body1() {
+  return '<div class="chk">' + STEP_NODES.map(function(id, i) {
+    const n = byId[id], seen = !!viewedIndex[id];
+    return '<button type="button" class="mini' + (seen ? ' on' : '') + '" data-pk="s1-' + id + '" data-goto="' + id + '">' +
+      (i + 1) + '. ' + n.name + (seen ? ' ✓' : '（未看）') + '</button>';
+  }).join('') + '</div><p class="meta">点这些按钮可直接跳到对应节点，也可以回到上方星图依次点开。</p>';
+}
+function body2() {
+  return '<div class="chk">' + STEP_NODES.map(function(id) {
+    const n = byId[id], seen = !!viewedIndex[id], on = readScope.has(id);
+    return '<button type="button" class="mini' + (on ? ' on' : '') + '" data-pk="s2-' + id + '" data-scope="' + id + '"' +
+      (seen ? '' : ' disabled') + '>' + (on ? '✓ ' : '') + n.name + (seen ? ' 的适用范围' : '（需先看节点）') + '</button>';
+  }).join('') + '</div><p class="meta">未看过对应节点时按钮不可点——先看到结论，才有"适用范围"可言。</p>';
+}
+function body3() {
+  return GRADEQUIZ.map(function(it, i) {
+    const picked = gradeAnswers[i];
+    const opts = GRADE_OPTS.map(function(o, oi) {
+      return '<button type="button" class="mini' + (picked !== undefined && oi === it.correct ? ' on' : '') +
+        '" data-pk="s3-' + i + '-' + oi + '" data-gq="' + i + '" data-go="' + oi + '">' + o + '</button>';
+    }).join('');
+    let fb = '';
+    if (picked !== undefined) {
+      const right = picked === it.correct;
+      fb = '<p class="meta ' + (right ? 'okline' : 'warnline') + '">' +
+        (right ? '判断正确。' : '这一条应判为' + GRADE_OPTS[it.correct] + '。') + it.explain + '</p>';
+    }
+    return '<div class="qblock"><p class="qtext">' + (i + 1) + '. ' + it.text + '</p><div class="chk">' + opts + '</div>' + fb + '</div>';
+  }).join('') + '<p class="meta">答错不会锁定，可以重选；三题全部答对才算完成本步。</p>';
+}
+function body4() {
+  return '<p class="meta">测验在上方「证据导览台」面板，3 组共 ' + totalQs() +
+    ' 题，每题带即时解析与证据卡回链；错题建议点开回链再看一遍适用范围。</p>' +
+    '<div class="chk"><button type="button" class="mini" data-pk="s4-jump" id="jumpQuiz">跳到测验区 ↗</button></div>';
+}
+function body5() {
+  return '<label class="sr-only" for="openAnswer">开放题作答</label>' +
+    '<textarea class="openq" id="openAnswer" data-pk="openq" placeholder="用自己的话作答…"></textarea>' +
+    '<p class="meta" id="openCount">已写 0 字</p>' +
+    '<p class="meta">开放题<b>本机不判分</b>：只记录字数与是否提交，并原样保留你的表述，供本人或教师回看。</p>';
+}
+
+/* 5 步定义：标题、导语、完成判定、进度文案、主体渲染 */
+const STEPS = [
+  { n:1, title:'看节点：沿演化链走一遍',
+    desc:'先建立"从星云到恒星遗迹"的先后顺序，不必急着记名词。',
+    check:function(){ return STEP_NODES.every(function(id){ return !!viewedIndex[id]; }); },
+    meta:function(){ return '已看 ' + STEP_NODES.filter(function(id){ return viewedIndex[id]; }).length + ' / 5 个节点'; },
+    body:body1 },
+  { n:2, title:'读证据：每条结论先看适用范围',
+    desc:'点开至少 3 个条目的「适用范围」字段，读完一块就标记一块。',
+    check:function(){ return readScope.size >= 3; },
+    meta:function(){ return '已标记阅读适用范围 ' + readScope.size + ' 条（达标 3 条）'; },
+    body:body2 },
+  { n:3, title:'判断证据类型：给 3 条结论分级',
+    desc:'先自己判断每条结论靠什么支持，答错了可以重做；不确定就回到证据卡看「证据类型」字段。',
+    check:function(){ return GRADEQUIZ.every(function(it, i){ return gradeAnswers[i] === it.correct; }); },
+    meta:function(){ return '分级判题答对 ' + GRADEQUIZ.filter(function(it, i){ return gradeAnswers[i] === it.correct; }).length + ' / 3 题'; },
+    body:body3 },
+  { n:4, title:'做测验：完成形成性测验',
+    desc:'回到测验区至少作答 6 题，把重心放在错题的解析与回链上。',
+    check:function(){ return Object.keys(answers).length >= 6; },
+    meta:function(){ return '测验已作答 ' + Object.keys(answers).length + ' / ' + totalQs() + ' 题（达标 6 题）'; },
+    body:body4 },
+  { n:5, title:'开放问题：用自己的话说清楚',
+    desc:'为什么不能把"恒星最终会变成黑洞"直接套用到太阳身上？写完后想一想：你的判断依据来自证据卡里的哪个字段？',
+    check:function(){ return openAnswer.trim().length >= 30; },
+    meta:function(){ return '开放题已写 ' + openAnswer.trim().length + ' 字（达标 30 字）'; },
+    body:body5 }
+];
+
+/* 当前学习者标识（使用者自填，可为空） */
+function learnerId() {
+  const el = $('learnerId');
+  return el ? el.value.trim() : '';
+}
+
+/* 判断某一步是否已开始（用于"进行中"标记） */
+function started(s) {
+  if (s.n === 1) return STEP_NODES.some(function(id){ return !!viewedIndex[id]; });
+  if (s.n === 2) return readScope.size > 0;
+  if (s.n === 3) return Object.keys(gradeAnswers).length > 0;
+  if (s.n === 4) return Object.keys(answers).length > 0;
+  return openAnswer.trim().length > 0;
+}
+
+/* 渲染学习路径：骨架只搭一次，逐步替换主体内容；重渲染后恢复键盘焦点 */
+function renderPath() {
+  const root = $('pathSteps');
+  if (!root.getAttribute('data-built')) {
+    root.innerHTML = STEPS.map(function(s) {
+      return '<div class="step" id="st' + s.n + '"><h4>第 ' + s.n + ' 步 · ' + s.title +
+        '<span class="chip" id="c' + s.n + '">未开始</span></h4>' +
+        '<p style="margin:0 0 4px;font-size:12px;color:#cfd3e6">' + s.desc + '</p>' +
+        '<div id="bd' + s.n + '"></div><p class="meta" id="m' + s.n + '"></p></div>';
+    }).join('');
+    root.setAttribute('data-built', '1');
+  }
+  const act = document.activeElement;
+  const pk = act && act.dataset ? act.dataset.pk : null;
+  STEPS.forEach(function(s) {
+    const box = $('bd' + s.n);
+    if (s.n === 5) {
+      if (!box.innerHTML.trim()) {
+        box.innerHTML = s.body();
+        const ta = $('openAnswer');
+        ta.value = openAnswer;
+        ta.oninput = function() { openAnswer = ta.value; updateOpenCount(); updatePathMeta(); };
+      }
+    } else {
+      box.innerHTML = s.body();
+    }
+  });
+  updatePathMeta();
+  updateOpenCount();
+  if (pk) {
+    const back = document.querySelector('[data-pk="' + pk + '"]');
+    if (back && !back.disabled) back.focus();
+  }
+}
+
+/* 更新开放题字数提示 */
+function updateOpenCount() {
+  const el = $('openCount');
+  if (!el) return;
+  const n = openAnswer.trim().length;
+  el.textContent = '已写 ' + n + ' 字' + (n >= 30 ? '（已满足不少于 30 字的要求）' : '（不少于 30 字即可完成本步）') + '。';
+}
+
+let credShown = false;
+
+/* 更新每步标记、进度条与学习凭证（不重建交互内容） */
+function updatePathMeta() {
+  let doneN = 0;
+  STEPS.forEach(function(s) {
+    const ok = !!s.check();
+    if (ok) { doneN++; if (!stepDoneAt[s.n]) stepDoneAt[s.n] = new Date().toISOString(); }
+    else delete stepDoneAt[s.n];
+    const card = $('st' + s.n), chip = $('c' + s.n);
+    if (card) card.className = 'step' + (ok ? ' done' : '');
+    if (chip) {
+      chip.textContent = ok ? '已完成' : (started(s) ? '进行中' : '未开始');
+      chip.className = 'chip' + (ok ? ' done' : '');
+    }
+    const m = $('m' + s.n);
+    if (m) m.textContent = s.meta();
+  });
+  $('pathBar').style.width = (doneN / STEPS.length * 100) + '%';
+  const bar = document.querySelector('.bar[role="progressbar"]');
+  if (bar) bar.setAttribute('aria-valuenow', String(doneN));
+  $('pathMeta').textContent = '已完成 ' + doneN + ' / ' + STEPS.length + ' 步' +
+    (doneN === STEPS.length ? ' · 全部完成，学习凭证已生成 ↓' : '');
+  renderCredential(doneN === STEPS.length);
+}
+
+/* 学习凭证：5 步全部完成后生成 */
+function renderCredential(allDone) {
+  if (allDone === credShown) return;
+  credShown = allDone;
+  const box = $('credential');
+  if (!allDone) { box.innerHTML = ''; return; }
+  box.innerHTML =
+    '<div class="cred"><h4>学习凭证 · 已生成</h4>' +
+    '<p style="font-size:12px;margin:0 0 6px;color:#d6d8e8"><b>任务：</b>从星云到恒星遗迹（5 步引导式探究）<br>' +
+    '<b>学习者标识：</b>' + (learnerId() || '未填写') + '<br>' +
+    '<b>完成时间：</b>' + (stepDoneAt[5] || new Date().toISOString()) + '</p>' +
+    '<ul>' + STEPS.map(function(s) {
+      return '<li>第 ' + s.n + ' 步 · ' + s.title + '：已完成（' + (stepDoneAt[s.n] || '') + '）</li>';
+    }).join('') + '</ul>' +
+    '<p style="font-size:12px;margin:0 0 4px"><b>教学目标达成标记（本机自评）：</b></p><ul>' +
+    goalMarks().map(function(g) {
+      return '<li>' + g.目标 + '：<b>' + g.达成状态 + '</b> — ' + g.依据 + '</li>';
+    }).join('') + '</ul>' +
+    '<p class="meta" style="font-size:11px;color:var(--muted)">凭证由本机生成，仅反映本次使用过程，未经第三方认定，也不作为学习效果评价的正式依据；数据不上传。</p>' +
+    '<div class="chk"><button type="button" class="mini" id="exportCred">导出学习凭证（JSON）</button></div></div>';
+  $('exportCred').onclick = exportCredential;
+}
+
+/* 三条教学目标的达成标记：全部依据本机本次使用过程自动采集 */
+function goalMarks() {
+  const gRight = GRADEQUIZ.filter(function(it, i){ return gradeAnswers[i] === it.correct; }).length;
+  const missed = record.asked.filter(function(a){ return a.命中情况 !== '命中'; }).length;
+  const openOK = openAnswer.trim().length >= 30;
+  return [
+    { 目标:'目标 1 · ' + GOALS[0],
+      达成状态: gRight === GRADEQUIZ.length ? '达成' : (Object.keys(gradeAnswers).length ? '进行中' : '未开始'),
+      依据:'引导式学习路径第 3 步：分级判题答对 ' + gRight + ' / ' + GRADEQUIZ.length + ' 题' },
+    { 目标:'目标 2 · ' + GOALS[1],
+      达成状态: readScope.size >= 3 ? '达成' : (readScope.size ? '进行中' : '未开始'),
+      依据:'第 2 步：已标记阅读「适用范围」' + readScope.size + ' 条（达标 3 条）' },
+    { 目标:'目标 3 · ' + GOALS[2],
+      达成状态: (missed && openOK) ? '达成' : ((missed || openOK) ? '进行中' : '未开始'),
+      依据:'本机范围外提问 ' + missed + ' 次；开放题' + (openOK ? '已提交（' + openAnswer.trim().length + ' 字）' : '未提交') }
+  ];
+}
+
+/* 学习路径快照，供档案与凭证共用 */
+function pathSnapshot() {
+  return STEPS.map(function(s) {
+    return { 步骤: s.n, 名称: s.title, 完成情况: s.check() ? '已完成' : '未完成', 完成时间: stepDoneAt[s.n] || null };
+  });
+}
+function pathAllDone() { return STEPS.every(function(s){ return !!s.check(); }); }
+
+/* 路径面板的事件委托：跳节点、标记适用范围、分级判题、跳测验 */
+function bindPath() {
+  $('pathSteps').addEventListener('click', function(e) {
+    const b = e.target.closest('button');
+    if (!b) return;
+    if (b.dataset.goto) {
+      show(b.dataset.goto);
+      $('claim').scrollIntoView({ block: 'center' });
+      renderPath();
+    } else if (b.dataset.scope) {
+      const id = b.dataset.scope;
+      if (readScope.has(id)) readScope.delete(id); else readScope.add(id);
+      renderPath();
+    } else if (b.dataset.gq !== undefined) {
+      gradeAnswers[+b.dataset.gq] = +b.dataset.go;
+      renderPath();
+    } else if (b.id === 'jumpQuiz') {
+      $('quizProgress').scrollIntoView({ block: 'center' });
+    }
+  });
+}
+
+/* ===== 通用下载：对象 → JSON 文件 ===== */
+function downloadJSON(data, filename) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(a.href);
+  a.remove();
+}
+
+/* 导出学习凭证 */
+function exportCredential() {
+  downloadJSON({
+    作品: '星问 · 带证据链的天文导览伙伴',
+    凭证类型: '引导式学习路径完成凭证',
+    任务: '从星云到恒星遗迹（5 步探究）',
+    学习者标识: learnerId() || '未填写',
+    生成时间: new Date().toISOString(),
+    步骤完成情况: pathSnapshot(),
+    是否全部完成: pathAllDone(),
+    测验情况: {
+      题目总数: totalQs(),
+      已答题数: Object.keys(answers).length,
+      正确数: Object.keys(answers).filter(function(k){ return answers[k].ok; }).length
+    },
+    开放题作答字数: openAnswer.trim().length,
+    开放题作答内容: openAnswer.trim(),
+    教学目标达成标记: goalMarks(),
+    声明: '本凭证由浏览器本地生成，未上传服务器；仅反映本次使用过程，未经第三方认定，也不作为学习效果评价的正式依据。'
+  }, 'star-pathway-certificate.json');
+}
+
+/* ===== 教师视图：本机解析与汇总，不上传任何数据 ===== */
+let teacherSummary = null;
+
+/* 转义外部粘贴内容，避免把数据当作 HTML 渲染 */
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, function(c) {
+    return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+  });
+}
+
+/* 解析一段文本：支持单个对象、多个对象组成的数组；失败时给出具体原因 */
+function parseArchives(text) {
+  let raw;
+  try { raw = JSON.parse(text); }
+  catch (err) { return { ok: false, msg: 'JSON 解析失败：' + err.message }; }
+  let arr;
+  if (Array.isArray(raw)) arr = raw;
+  else if (raw && typeof raw === 'object') arr = [raw];
+  else return { ok: false, msg: '内容既不是对象也不是数组，请粘贴导出的学习档案 JSON。' };
+
+  const list = [], skipped = [];
+  arr.forEach(function(it, i) {
+    if (!it || typeof it !== 'object' || Array.isArray(it)) { skipped.push('第 ' + (i + 1) + ' 项：不是对象'); return; }
+    const known = ('测验结果' in it) || ('查看过的节点' in it) || ('提问记录' in it) ||
+                  ('学习路径' in it) || ('教学目标达成标记' in it);
+    if (!known) { skipped.push('第 ' + (i + 1) + ' 项：缺少学习档案字段'); return; }
+    list.push(it);
+  });
+  if (!list.length) return { ok: false, msg: '没有找到可用的学习档案。' + (skipped.length ? '被跳过：' + skipped.join('；') : '') };
+  return { ok: true, list: list, skipped: skipped };
+}
+
+/* 把 {键:次数} 排成降序数组 */
+function rank(obj) {
+  return Object.keys(obj).map(function(k) { return { k: k, v: obj[k] }; })
+    .sort(function(a, b) { return b.v - a.v; });
+}
+
+/* 汇总多条档案：人数、正确率、高频错题、高频未命中问题、路径与目标达成 */
+function aggregate(list) {
+  const learners = {}, rates = [], wrong = {}, miss = {}, goals = {}, stepDone = {};
+  let totQ = 0, totA = 0, totC = 0, pathDone = 0, openSub = 0, goalRec = 0;
+
+  list.forEach(function(d, i) {
+    /* 去重规则：优先用学习者标识；旧版本档案没有该字段时退回按档案序号计数 */
+    const who = (typeof d.学习者标识 === 'string' && d.学习者标识.trim()) ? d.学习者标识.trim() : ('档案#' + (i + 1));
+    learners[who] = true;
+    const q = d.测验结果 || {};
+    const total = Number(q.题目总数) || 0, ans = Number(q.已答题数) || 0, cor = Number(q.正确数) || 0;
+    totQ += total; totA += ans; totC += cor;
+    if (total > 0) rates.push(cor / total);
+
+    (Array.isArray(q.明细) ? q.明细 : []).forEach(function(it) {
+      if (it && !it.是否正确) { const k = String(it.题面 || '(未标注题面)'); wrong[k] = (wrong[k] || 0) + 1; }
+    });
+    (Array.isArray(d.提问记录) ? d.提问记录 : []).forEach(function(a) {
+      if (a && a.命中情况 && a.命中情况 !== '命中') { const k = String(a.问题 || '(空问题)'); miss[k] = (miss[k] || 0) + 1; }
+    });
+
+    const p = d.学习路径 || {};
+    if (p.是否全部完成 === true) pathDone++;
+    if (typeof p.开放题作答字数 === 'number' && p.开放题作答字数 >= 30) openSub++;
+    (Array.isArray(p.步骤完成情况) ? p.步骤完成情况 : []).forEach(function(s) {
+      if (s && s.完成情况 === '已完成') {
+        const k = String(s.名称 || ('第 ' + s.步骤 + ' 步'));
+        stepDone[k] = (stepDone[k] || 0) + 1;
+      }
+    });
+
+    (Array.isArray(d.教学目标达成标记) ? d.教学目标达成标记 : []).forEach(function(g) {
+      if (!g) return;
+      const k = String(g.目标 || g.id || '(未标注目标)');
+      goals[k] = goals[k] || { 达成: 0, 进行中: 0, 未开始: 0 };
+      const st = String(g.达成状态 || '未开始');
+      if (st in goals[k]) goals[k][st]++; else goals[k]['未开始']++;
+      goalRec++;
+    });
+  });
+
+  const avg = rates.length ? rates.reduce(function(a, b) { return a + b; }, 0) / rates.length : 0;
+  return {
+    档案数: list.length, 参与人数: Object.keys(learners).length,
+    有测验记录人数: rates.length, 总题目数: totQ, 总答题数: totA, 总正确题数: totC, 平均正确率: avg,
+    学习路径全部完成人数: pathDone, 开放题已提交人数: openSub, 目标标记记录数: goalRec,
+    高频错题: rank(wrong), 高频未命中问题: rank(miss),
+    步骤完成人数: Object.keys(stepDone).map(function(k){ return { k: k, v: stepDone[k] }; }),
+    教学目标: goals
+  };
+}
+
+/* 生成汇总表格 HTML（单元格内容一律转义） */
+function tTable(title, cols, rows, empty) {
+  let h = '<h4 style="font-size:12px;color:var(--blue);margin:12px 0 2px">' + esc(title) + '</h4>';
+  if (!rows.length) { h += '<p class="meta">' + esc(empty) + '</p>'; return h; }
+  h += '<div class="tblwrap"><table class="tbl"><thead><tr>' +
+    cols.map(function(c){ return '<th>' + esc(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+    rows.map(function(r) {
+      return '<tr>' + r.map(function(c){ return '<td>' + esc(c) + '</td>'; }).join('') + '</tr>';
+    }).join('') + '</tbody></table></div>';
+  return h;
+}
+
+function renderTeacher(sum, skipped) {
+  const pct = function(x) { return (x * 100).toFixed(1) + '%'; };
+  const s = function(v, l) { return '<div class="stat"><b>' + esc(v) + '</b><span>' + esc(l) + '</span></div>'; };
+  let h = '<div class="statgrid">' +
+    s(sum.档案数, '导入档案数') + s(sum.参与人数, '参与人数（去重）') +
+    s(pct(sum.平均正确率), '平均正确率（人均）') + s(sum.总正确题数 + ' / ' + sum.总答题数, '总正确 / 总答题') +
+    s(sum.学习路径全部完成人数 + ' / ' + sum.档案数, '路径全部完成人数') +
+    s(sum.开放题已提交人数 + ' / ' + sum.档案数, '开放题达标人数') + '</div>';
+
+  h += tTable('高频错题 Top 10', ['排名', '题面', '错误次数'],
+    sum.高频错题.slice(0, 10).map(function(r, i) { return [i + 1, r.k, r.v]; }), '没有错题记录。');
+  h += tTable('高频未命中问题 Top 10（可据此补充条目或调整讲解）', ['排名', '学习者提问', '出现次数'],
+    sum.高频未命中问题.slice(0, 10).map(function(r, i) { return [i + 1, r.k, r.v]; }), '没有未命中提问记录。');
+  h += tTable('学习路径各步完成人数', ['步骤', '完成人数'],
+    sum.步骤完成人数.map(function(r) { return [r.k, r.v]; }), '档案中暂无学习路径完成情况（旧版本档案不含该字段）。');
+  h += tTable('教学目标达成情况（本机自评，非实测结论）', ['教学目标', '达成', '进行中', '未开始'],
+    Object.keys(sum.教学目标).map(function(k) {
+      const g = sum.教学目标[k];
+      return [k, g.达成, g.进行中, g.未开始];
+    }), '档案中暂无教学目标达成标记（旧版本档案不含该字段）。');
+
+  h += '<p class="meta" style="font-size:11px;color:var(--muted)">以上统计在本浏览器内完成，' +
+    '仅按档案中的字段计数；由本机自评标记汇总而来的数字<b>不等同于经过验证的教学效果</b>。</p>';
+  if (skipped && skipped.length) {
+    h += '<p class="meta warnline" style="font-size:11px">被跳过的内容：' + esc(skipped.join('；')) + '</p>';
+  }
+  $('teacherOut').innerHTML = h;
+  teacherSummary = sum;
+  $('teacherExport').disabled = false;
+  note('已解析 ' + sum.档案数 + ' 条档案（去重参与 ' + sum.参与人数 + ' 人）。可导出班级汇总 CSV。', true);
+}
+
+/* 教师视图的提示行 */
+function note(msg, ok) {
+  const el = $('teacherNote');
+  el.textContent = msg;
+  el.style.color = ok ? '#bff0d3' : '#ffd9cf';
+}
+
+/* 导出班级汇总 CSV（带 BOM，Excel 可直接打开） */
+function exportClassCSV() {
+  if (!teacherSummary) return;
+  const t = teacherSummary;
+  const pct = function(x) { return (x * 100).toFixed(1) + '%'; };
+  const rows = [];
+  rows.push(['星问 · 班级汇总（本机生成，数字来自用户导入的档案，未经第三方核验）']);
+  rows.push(['生成时间', new Date().toLocaleString()]);
+  rows.push([]);
+  rows.push(['指标', '数值']);
+  rows.push(['导入档案数', t.档案数]);
+  rows.push(['参与人数（去重）', t.参与人数]);
+  rows.push(['平均正确率（人均）', pct(t.平均正确率)]);
+  rows.push(['总答题数', t.总答题数]);
+  rows.push(['总正确题数', t.总正确题数]);
+  rows.push(['学习路径全部完成人数', t.学习路径全部完成人数]);
+  rows.push(['开放题达标人数', t.开放题已提交人数]);
+  rows.push([]);
+  rows.push(['高频错题', '错误次数']);
+  if (t.高频错题.length) t.高频错题.forEach(function(r) { rows.push([r.k, r.v]); });
+  else rows.push(['（无）', 0]);
+  rows.push([]);
+  rows.push(['高频未命中问题', '出现次数']);
+  if (t.高频未命中问题.length) t.高频未命中问题.forEach(function(r) { rows.push([r.k, r.v]); });
+  else rows.push(['（无）', 0]);
+  rows.push([]);
+  rows.push(['学习路径步骤', '完成人数']);
+  if (t.步骤完成人数.length) t.步骤完成人数.forEach(function(r) { rows.push([r.k, r.v]); });
+  else rows.push(['（档案中无此字段）', 0]);
+  rows.push([]);
+  rows.push(['教学目标', '达成', '进行中', '未开始']);
+  Object.keys(t.教学目标).forEach(function(k) {
+    const g = t.教学目标[k];
+    rows.push([k, g.达成, g.进行中, g.未开始]);
+  });
+
+  const csv = '﻿' + rows.map(function(r) {
+    return r.map(function(c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(',');
+  }).join('\r\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'star-class-summary.csv';
+  document.body.appendChild(a);
+  a.click();
+  URL.revokeObjectURL(a.href);
+  a.remove();
+}
+
+/* ===== 作品说明抽屉 ===== */
+function openDrawer() {
+  $('mask').hidden = false;
+  requestAnimationFrame(() => $('mask').classList.add('on'));
+  $('drawer').classList.add('on');
+  $('drawer').setAttribute('aria-hidden', 'false');
+  $('closeInfo').focus();
+}
+function closeDrawer() {
+  $('mask').classList.remove('on');
+  $('drawer').classList.remove('on');
+  $('drawer').setAttribute('aria-hidden', 'true');
+  setTimeout(() => { $('mask').hidden = true; }, 240);
+  $('openInfo').focus();
+}
+
+/* ===== 初始化绑定 ===== */
+$('openInfo').onclick = openDrawer;
+$('closeInfo').onclick = closeDrawer;
+$('mask').onclick = closeDrawer;
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('drawer').classList.contains('on')) closeDrawer();
+});
+
+$('questions').innerHTML = NODES.map(n =>
+  '<button class="q" type="button" aria-pressed="false" data-id="' + n.id + '">' + n.name + '</button>').join('');
+document.querySelectorAll('#questions .q').forEach(b => {
+  b.onclick = () => {
+    $('queryNote').className = 'query-note';
+    $('queryNote').textContent = '当前为预置知识卡片，来源已在下方证据卡中列明。';
+    show(b.dataset.id);
+  };
+});
+document.querySelectorAll('.node').forEach(n => {
+  n.onclick = () => {
+    $('queryNote').className = 'query-note';
+    $('queryNote').textContent = '当前为预置知识卡片，来源已在下方证据卡中列明。';
+    show(n.dataset.id);
+  };
+});
+$('questionForm').addEventListener('submit', e => {
+  e.preventDefault();
+  answerQuestion($('questionInput').value);
+});
+$('redoQuiz').onclick = () => {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  renderQuiz();
+};
+$('exportRecord').onclick = exportRecord;
+
+/* ===== 引导式学习路径绑定 ===== */
+renderPath();
+bindPath();
+$('learnerId').addEventListener('input', () => {
+  if (credShown) { credShown = false; updatePathMeta(); }   // 标识变化后重画凭证上的署名
+});
+
+/* ===== 教师视图绑定 ===== */
+$('teacherParse').onclick = async () => {
+  const texts = [], skipped = [];
+  const pasted = $('teacherInput').value.trim();
+  if (pasted) texts.push(pasted);
+  const files = Array.from($('teacherFiles').files || []);
+  for (const f of files) {
+    try { const txt = await f.text(); if (txt.trim()) texts.push(txt); }
+    catch (e) { skipped.push('文件 ' + f.name + ' 读取失败'); }
+  }
+  if (!texts.length) { note('请先粘贴学习档案 JSON，或选择至少一个 .json 文件。', false); return; }
+
+  const list = [];
+  texts.forEach((t, i) => {
+    const r = parseArchives(t);
+    if (r.ok) {
+      list.push.apply(list, r.list);
+      skipped.push.apply(skipped, r.skipped);
+    } else {
+      skipped.push('来源 #' + (i + 1) + '：' + r.msg);
+    }
+  });
+  if (!list.length) {
+    $('teacherOut').innerHTML = '';
+    teacherSummary = null;
+    $('teacherExport').disabled = true;
+    note('没有可用档案。' + skipped.join('；'), false);
+    return;
+  }
+  renderTeacher(aggregate(list), skipped);
+};
+$('teacherSample').onclick = () => {
+  $('teacherInput').value = JSON.stringify(buildRecord(), null, 2);
+  note('已把本机当前进度填入上方文本框（用于自测教师视图）。点击「解析并汇总」查看效果。', true);
+};
+$('teacherClear').onclick = () => {
+  $('teacherInput').value = '';
+  $('teacherFiles').value = '';
+  $('teacherOut').innerHTML = '';
+  teacherSummary = null;
+  $('teacherExport').disabled = true;
+  note('已清空本机数据（档案只存在内存中，刷新页面同样会清空）。', true);
+};
+$('teacherExport').onclick = exportClassCSV;
+
+renderQuiz();
+show(current);
+</script>
+</body>
+</html>
